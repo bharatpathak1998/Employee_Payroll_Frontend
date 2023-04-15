@@ -1,0 +1,20 @@
+.header-content {
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  width: 81.25%;
+  margin: 10px auto 10px;
+}
+
+.emp-text {
+  font: normal normal bold 18px montserrat;
+  font-family: "montserrat", sans-serif;
+  margin-left: 5px;
+  letter-spacing: 0;
+  color: coral;
+  text-transform: capitalize;
+}
+
+.emp-payroll {
+  color: #42515F;
+}

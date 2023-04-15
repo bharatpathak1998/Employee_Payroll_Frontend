@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<div class="main-content">
+  <div class="header-content">
+    <div class="emp-detail-text">
+      Employee Details
+      <div class="emp-count">{{ employeeCount }}</div>
+    </div>
+    <div class="box">
+      <input type="checkbox" id="check"/>
+      <div class="search-box">
+        <input placeholder="Search" name="search" [(ngModel)]="searchText"/>
+        <label for="check" class="icon">
+          <i class="fas fa-search"></i>
+        </label>
+      </div>
+    </div>
+
+    <a class="add-button" routerLink="/add">
+      <img src="./assets/icons/add-24px.svg" alt="Image"/>Add User</a>
+  </div>
+  <div class="table-main">
+    <table id="table-display" class="table">
+      <tr>
+        <!-- Table Headers -->
+        <th>Profile</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Start Date</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let employee of employeeDetails | filter : searchText">
+        <td>
+          <img class="profile" src="{{ employee.empProfilePic }}" alt=""/>
+        </td>
+        <td>{{ employee.empName }}</td>
+        <td>{{ employee.empGender }}</td>
+        <td>
+          <div
+            class="dept-label"
+            *ngFor="let department of employee.empDepartment">
+            {{ department }}
+          </div>
+        </td>
+        <td>{{ employee.empSalary | currency : "INR" }}</td>
+        <td>{{ employee.startDate | date : "dd MMM yyyy" }}</td>
+        <td>
+          <i id="{{ employee.empId }}" class="fas fa-trash-alt" (click)="remove(employee.empId)"></i>
+          &#160;
+          <i id="{{ employee.empId }}" class="fas fa-edit" (click)="update(employee)"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
